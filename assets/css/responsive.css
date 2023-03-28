@@ -1,4 +1,5 @@
 @media only screen and (max-width: 492px) {
+    /* Side Section */
     .sideSection {
         position: absolute;
         width: 100%;
@@ -7,13 +8,32 @@
         opacity: 0;
     }
 
+    /* Navbar */
+    .navbar .logoContainer, .navbar .settingsIcon {
+        width: 30px;
+        height: 30px;
+    }
+
+    .navbar .logoContainer {
+        width: 35px;
+        padding: 10px 0 0 6px;
+    }
+
+    .navbar .logoContainer::before, .navbar .settingsIcon::before {
+        width: 40px;
+        height: 40px;
+    }
+
+    /* Main Body With Content */
     .body {
         width: 100%;
         border-radius: 0;
     }
 
     .body h1 {
-        left: 25%;
+        width: unset;
+        left: 50%;
+        font-size: var(--big-size);
     }
 
     .body .prayTimesContainer {
@@ -22,7 +42,9 @@
     }
 
     .prayTimesContainer .row.dateContainer {
+        height: 130px;
         font-size: var(--bigger-size);
+        background: rgba(231, 223, 211, 0.5);
     }
 
     .prayTimesContainer .row.dateContainer .date {
@@ -34,11 +56,21 @@
     }
 
     .prayTimesContainer .row.prayTimeContainer .until {
-        opacity: 40%;
+        opacity: 50%;
+    }
+
+    .prayTimesContainer .row.prayTimeContainer .prayTime, 
+    .prayTimesContainer .row.prayTimeContainer .until {
+        background: rgba(234, 226, 214, .5);
     }
 
     .body .timeNow {
         display: none;
+        width: 90%;
+        right: 5%;
+        bottom: unset;
+        top: 120px;
+        background: rgba(234, 226, 214, .5);
     }
 
     body::before {

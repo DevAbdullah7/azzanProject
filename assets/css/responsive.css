@@ -7,14 +7,18 @@
     .sideSection {
         position: absolute;
         width: 100%;
-        transform: translateY(-10%);
+        -webkit-transform: translateY(-10%);
+            -ms-transform: translateY(-10%);
+                transform: translateY(-10%);
         border-radius: 0;
         opacity: 0;
         background: transparent;
     }
 
     #mainBody.settings .sideSection {
-        transform: translateY(-24%);
+        -webkit-transform: translateY(-24%);
+            -ms-transform: translateY(-24%);
+                transform: translateY(-24%);
         opacity: 1;
     }
     
@@ -41,7 +45,8 @@
         width: 64px;
         height: 64px;
         border-radius: 12.5px;
-        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+                backdrop-filter: blur(5px);
         background: rgba(234, 226, 214, .25);
     }
 
@@ -86,12 +91,14 @@
     }
 
     select {
-        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+                backdrop-filter: blur(5px);
         font-size: var(--small-size);
     }
 
     .btn {
-        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+                backdrop-filter: blur(5px);
         background: rgba(83, 62, 60, .85);
     }
 
@@ -103,10 +110,14 @@
     .body {
         width: 100%;
         border-radius: 0;
+        -webkit-transition: .5s all ease-in-out;
+        -o-transition: .5s all ease-in-out;
         transition: .5s all ease-in-out;
     }
     #mainBody.settings .body {
-        transform: translateX(-100%);
+        -webkit-transform: translateX(-100%);
+            -ms-transform: translateX(-100%);
+                transform: translateX(-100%);
     }
 
     .body h1 {
@@ -117,7 +128,9 @@
 
     .body .prayTimesContainer {
         width: 100%;
-        transform: translateY(-16px);
+        -webkit-transform: translateY(-16px);
+            -ms-transform: translateY(-16px);
+                transform: translateY(-16px);
     }
 
     .prayTimesContainer .row.dateContainer {
@@ -180,13 +193,17 @@
     }
 
     .prayTimesContainer .row.prayTimeContainer .prayTime {
-        justify-content: space-between;
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
         padding: 10px 24px;
     }
     .prayTimesContainer .row.prayTimeContainer.done .prayTime {
         width: 100%;
         padding: 10px 24px;
-        justify-content: space-between;
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
     }
 
     .prayTimesContainer .row.prayTimeContainer.done .until {

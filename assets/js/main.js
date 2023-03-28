@@ -202,7 +202,7 @@ function getPrayTimes() {
     let city = localStorage.valueOf('city').city
     // fetch(`http`)
     fetch(`http://api.aladhan.com/v1/timingsByCity?city=${city}&country=${country}&method=8`).then(response => response.json()).then(data => {
-        console.log('good')
+        console.log('api working fine')
         let times = data.data.timings;
         let prayesNames = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Maghrib', 'Isha']
         Object.entries(times).forEach(function([key, value]) {
@@ -212,7 +212,7 @@ function getPrayTimes() {
         });
     }).catch((err) => {
         console.log(err)
-        console.log('fuck')
+        console.log("api doesn't work !")
         let prayesTimes = {
             'Fajr': '05:01', 
             'Sunrise': '06:22', 

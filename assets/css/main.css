@@ -694,15 +694,15 @@ body.english .choice .choiceInputs div {
     width: 24%;
     padding: 0 25px 0 0;
     top: 75px;
-    transform: scaleX(0);
+    transform: translateX(-100%);
     transform-origin: left;
     opacity: 0;
-    transition: all ease-in-out .5s;
+    transition: .5s all ease-in-out;
 }
 
 body.settings .settingsSection {
     opacity: 1;
-    transform: scaleX(1);
+    transform: translateX(0);
 }
 
 body.english.settings .settingsSection {

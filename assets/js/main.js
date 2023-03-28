@@ -85,13 +85,13 @@ function welcomeScreen() {
     `
     document.querySelector('body').innerHTML = welcomeScreenContent
     document.querySelector('body').classList = 'welcome'
-    window.localStorage.setItem('visited', 'true');
     window.localStorage.setItem('lang', 'arabic');
     document.querySelector('body').classList.add(localStorage.valueOf('lang').lang)
     const Continu = document.getElementById('Continu')
     Continu.addEventListener('click', () => {
         window.localStorage.setItem('reqAvalibleNum', 0);
         window.localStorage.setItem('reqAvalibleTime', new Date().getTime());
+        window.localStorage.setItem('visited', 'true');
         saveInfo()
     })
 }
@@ -191,6 +191,7 @@ function saveInfo(){
         document.querySelector('#mainBody').classList.remove('settings')
         reqHandling()
         getPrayTimes()
+        window.location.reload()
     }
 }
 
@@ -204,7 +205,9 @@ function getPrayTimes() {
         let times = data.data.timings;
         let prayesNames = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Maghrib', 'Isha']
         Object.entries(times).forEach(function([key, value]) {
-            window.localStorage.setItem(`${key}`, `${value}`)
+            if (prayesNames.includes(`${key}`)) {
+                window.localStorage.setItem(`${key}`, `${value}`)
+            }
         });
     }).catch((err) => {
         console.log(err)
@@ -220,7 +223,6 @@ function getPrayTimes() {
             window.localStorage.setItem(`${key}`, `${value}`)
         })
     })
-    window.location.reload()
 }
 
 // Print Times On Screen

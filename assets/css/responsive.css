@@ -1,4 +1,4 @@
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1400px) {
     body::after {
         background: rgba(0, 0, 0, .05);
     }

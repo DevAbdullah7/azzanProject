@@ -4,11 +4,20 @@
         position: absolute;
         width: 100%;
         border-radius: 0;
-        z-index: 1;
         opacity: 0;
+        background: transparent;
+    }
+
+    #mainBody.settings .sideSection {
+        transform: translateY(16%);
+        opacity: 1;
     }
 
     /* Navbar */
+    .navbar {
+        z-index: 1000;
+    }
+
     .navbar .logoContainer, .navbar .settingsIcon {
         width: 30px;
         height: 30px;
@@ -24,10 +33,20 @@
         height: 40px;
     }
 
+    .settingsSection {
+        width: 100%;
+        padding: 0 20px;
+        top: 16px;
+    }
+
     /* Main Body With Content */
     .body {
         width: 100%;
         border-radius: 0;
+        transition: .5s all ease-in-out;
+    }
+    #mainBody.settings .body {
+        transform: translateX(-100%);
     }
 
     .body h1 {

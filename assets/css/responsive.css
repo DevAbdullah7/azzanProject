@@ -50,11 +50,16 @@
 
     select {
         backdrop-filter: blur(5px);
+        font-size: var(--small-size);
     }
 
     .btn {
         backdrop-filter: blur(5px);
         background: rgba(83, 62, 60, .85);
+    }
+
+    .btn#Continu {
+        height: 50px;
     }
 
     /* Main Body With Content */
@@ -116,5 +121,23 @@
     
     img.background {
         width: 100%;
+    }
+
+    /* Welcome Screen */
+    .welcomeScreen {
+        width: 90%;
+        height: 90vh;
+        right: 5%;
+        padding: 15px;
+        border-radius: 15px;
+    }
+
+    .welcomeScreen .textContainer .title,
+    .choice .choiceTitle {
+        font-size: var(--small-size);
+    }
+
+    .welcomeScreen .textContainer .textContent {
+        font-size: var(--smaller-size);
     }
 }

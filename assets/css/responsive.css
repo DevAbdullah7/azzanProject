@@ -1,6 +1,6 @@
 @media only screen and (max-width: 1400px) {
     body::after {
-        background: rgba(0, 0, 0, .05);
+        background: none;
     }
 
     /* Side Section */
@@ -60,7 +60,7 @@
     }
 
     .sideSection .copyRight {
-        display: none;
+        bottom: -190px;
     }
 
     /* Navbar */
@@ -113,6 +113,7 @@
         -webkit-transition: .5s all ease-in-out;
         -o-transition: .5s all ease-in-out;
         transition: .5s all ease-in-out;
+        background-color: rgba(0, 0, 0, .1);
     }
     #mainBody.settings .body {
         -webkit-transform: translateX(-100%);
@@ -128,15 +129,19 @@
 
     .body .prayTimesContainer {
         width: 100%;
-        -webkit-transform: translateY(-16px);
-            -ms-transform: translateY(-16px);
-                transform: translateY(-16px);
+        -webkit-transform: translateY(-50px);
+            -ms-transform: translateY(-50px);
+                transform: translateY(-50px);
     }
 
     .prayTimesContainer .row.dateContainer {
         height: 130px;
         font-size: var(--bigger-size);
         background: rgba(231, 223, 211, 0.5);
+    }
+
+    .prayTimesContainer .row.prayTimeContainer {
+        padding: 5px 0;
     }
 
     .prayTimesContainer .row.dateContainer .date {
@@ -167,7 +172,7 @@
     }
 
     body::before {
-        opacity: 5%;
+        opacity: 8%;
     }
     
     img.background {
@@ -177,10 +182,17 @@
     /* Welcome Screen */
     .welcomeScreen {
         width: 90%;
-        height: 90vh;
+        height: fit-content;
         right: 5%;
-        padding: 15px;
+        padding: 32px 15px 48px;
         border-radius: 15px;
+        -webkit-box-pack: start;
+            -ms-flex-pack: start;
+                justify-content: flex-start;
+    }
+
+    .welcomeScreen .choices {
+        margin-top: 16px;
     }
 
     .welcomeScreen .textContainer .title,

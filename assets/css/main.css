@@ -89,8 +89,8 @@ select {
     font-family: var(--arabic-font) !important;
     color: var(--mainColorLight);
     background: rgba(234, 226, 214, .75);
-    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
-            box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+    -webkit-box-shadow: 0 2px 15px rgba(0, 0, 0, .15);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, .15);
 }
 
 select:disabled {

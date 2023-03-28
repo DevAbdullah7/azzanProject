@@ -15,7 +15,7 @@ function welcomeScreen() {
     const welcomeScreenContent = `
     <div class="welcomeScreen">
         <div class="logoContainer">
-            <img src="../assets/imgs/logo.svg" alt="" class="logo logoWelcomeScreen">
+            <img src="../assets/imgs/testLogo.png" alt="" class="logo logoWelcomeScreen">
         </div>
         <form action="" class="choices choicesWelcomeScreen">
             <div class="choice">
@@ -27,13 +27,13 @@ function welcomeScreen() {
                     <div>
                         <div class="label">
                             <label for="radioArabic" class="arabic">عربي</label>
-                            <label for="radioArabic" class="english">Arabic</label>
+                            <label for="radioArabic" class="english">عربي</label>
                         </div>
                         <input type="radio" value="arabic" id="radioArabic" onclick="langRadiosHandel(this)" checked>
                     </div>
                     <div>
                         <div class="label">
-                            <label for="radioEnglish" class="arabic">انجليزي</label>
+                            <label for="radioEnglish" class="arabic">English</label>
                             <label for="radioEnglish" class="english">English</label>
                         </div>
                         <input type="radio" value="english" id="radioEnglish" onclick="langRadiosHandel(this)">
@@ -202,6 +202,7 @@ function getPrayTimes() {
     let city = localStorage.valueOf('city').city
     // fetch(`http`)
     fetch(`http://api.aladhan.com/v1/timingsByCity?city=${city}&country=${country}&method=8`).then(response => response.json()).then(data => {
+        console.log('good')
         let times = data.data.timings;
         let prayesNames = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Maghrib', 'Isha']
         Object.entries(times).forEach(function([key, value]) {
@@ -211,6 +212,7 @@ function getPrayTimes() {
         });
     }).catch((err) => {
         console.log(err)
+        console.log('fuck')
         let prayesTimes = {
             'Fajr': '05:01', 
             'Sunrise': '06:22', 

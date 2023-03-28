@@ -103,7 +103,7 @@
 
     .prayTimesContainer .row.prayTimeContainer .prayTime, 
     .prayTimesContainer .row.prayTimeContainer .until {
-        background: rgba(234, 226, 214, .5);
+        background: rgba(234, 226, 214, .25);
     }
 
     .body .timeNow {
@@ -139,5 +139,19 @@
 
     .welcomeScreen .textContainer .textContent {
         font-size: var(--smaller-size);
+    }
+
+    .prayTimesContainer .row.prayTimeContainer .prayTime {
+        justify-content: space-between;
+        padding: 10px 24px;
+    }
+    .prayTimesContainer .row.prayTimeContainer.done .prayTime {
+        width: 100%;
+        padding: 10px 24px;
+        justify-content: space-between;
+    }
+
+    .prayTimesContainer .row.prayTimeContainer.done .until {
+        display: none;
     }
 }

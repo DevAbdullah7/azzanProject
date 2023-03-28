@@ -260,6 +260,8 @@ function printTimes() {
     document.querySelectorAll('.until .time .hours').forEach((item)=>{
         if (Number(item.innerHTML) >= 0) {
             counterItems.push(Number(item.innerHTML))
+        } else {
+            item.parentNode.parentNode.parentNode.classList.add('done')
         }
     })
     let minItem = Math.min(...counterItems)

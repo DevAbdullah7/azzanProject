@@ -532,7 +532,7 @@ body.english .row.prayTimeContainer .prayTime .pray {
 }
 
 .prayTimesContainer .row.prayTimeContainer .until {
-    width: 45%;
+    width: 35%;
     justify-content: center;
     opacity: 25%;
 }

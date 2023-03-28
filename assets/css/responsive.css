@@ -9,8 +9,17 @@
     }
 
     #mainBody.settings .sideSection {
-        transform: translateY(16%);
+        transform: translateY(-16%);
         opacity: 1;
+    }
+
+    #mainBody.settings .sideSection .icon {
+        backdrop-filter: blur(5px);
+        background: rgba(234, 226, 214, .5);
+    }
+
+    .sideSection .copyRight {
+        display: none;
     }
 
     /* Navbar */
@@ -36,7 +45,16 @@
     .settingsSection {
         width: 100%;
         padding: 0 20px;
-        top: 16px;
+        top: 55%;
+    }
+
+    select {
+        backdrop-filter: blur(5px);
+    }
+
+    .btn {
+        backdrop-filter: blur(5px);
+        background: rgba(83, 62, 60, .85);
     }
 
     /* Main Body With Content */

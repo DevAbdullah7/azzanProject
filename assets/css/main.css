@@ -1,0 +1,720 @@
+/* ---------- Google Fonts ----------*/
+/* arabic */
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800&display=swap');
+
+/* english */
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
+
+
+/* ---------- Variables ----------*/
+:root {
+    /* ========== Colors ========== */
+    --mainColorLight: #533E3C;
+    --seccondColorLight: #EAE2D6;
+    --shiftColorLight: #E2D8CD;
+    --dangerColor: #b71d1d;
+
+    /* ========== End Colors ========== */
+
+
+    /* ========== Typography ========== */
+    /* Fonts Familyes */
+    --arabic-font: 'Tajawal', sans-serif;
+    --english-font: 'Comfortaa', cursive;
+
+    /* Colors : */
+    /* Light Mood */
+    --firstTyColorLight: #666666;
+    --seccondTyColorLight: #777777;
+    --thirdTyColorLight: #888888;
+
+    /* Dark Mood */
+    --firstTyColorDark: #EEEEEE;
+    --seccondTyColorDark: #C3C3C3;
+    --thirdTyColorDark: #999999;
+
+    /* Sizes */
+    /* Fonts Sizes */
+    --title-size: 36px;
+    --subTitle-size: 16px;
+    --super-big-size: 28px;
+    --bigger-size: 24px;
+    --big-size: 22px;
+    --normal-size: 20px;
+    --small-size: 18px;
+    --smaller-size: 16px;
+    --h2-size: 32px;
+    --h3-size: 26px;
+
+    /* Font Weight */
+    --super-big-weight: 800;
+    --biggest-weight: 700;
+    --bigger-weight: 600;
+    --big-weight: 500;
+    --normal-weight: 400;
+    --small-weight: 300;
+    --smaller-weight: 200;
+
+    /* Line Height */
+    --line-height-big: 28px;
+    --line-height-normal: 24px;
+    --line-height-small: 22px;
+
+    /* Text Shadow */
+    --normal-shadow: 0 2px 5px rgba(0, 0, 0, .1);
+    /* ========== End Typography ========== */
+}
+
+/* ========== End Variables ========== */
+
+
+/* ========== Componants ========== */
+select {
+    width: 100%;
+    height: 44px;
+    padding: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    font-size: var(--big-size);
+    font-family: var(--arabic-font) !important;
+    color: var(--mainColorLight);
+    background: rgba(234, 226, 214, .75);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+}
+
+select:disabled {
+    border: 1px solid var(--dangerColor);
+    opacity: 25%;
+}
+
+input[type="radio"] {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+} 
+
+input[type="radio"]:checked {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+}
+
+input[type="radio"]::before {
+    position: absolute;
+    content: '';
+    height: 100%;
+    width: 100%;
+    left: 0;
+    border-radius: 5px;
+    background: rgba(234, 226, 214, 1);
+    z-index: 1;
+}
+
+input[type="radio"]:checked::before {
+    position: absolute;
+    content: '';
+    height: 100%;
+    width: 100%;
+    left: 0;
+    border-radius: 5px;
+    background: var(--mainColorLight);
+    z-index: 1;
+}
+
+.btn {
+    width: 250px;
+    height: 75px;
+    margin: 25px auto 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #EAE2D6;
+    background: rgba(83, 62, 60, .75);
+    cursor: pointer;
+}
+
+* {
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+    color: var(--mainColorLight);
+    text-shadow: var(--normal-shadow);
+}
+
+html {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+body {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    direction: rtl;
+    font-family: var(--arabic-font);
+    background: linear-gradient(150deg, #EAE2D6, #E2D8CD);
+}
+
+body::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    left: 0;
+    background: url('../imgs/1.png');
+    background-size: cover;
+    opacity: 15%;
+    z-index: -100;
+}
+
+body::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    left: 0;
+    background: rgba(0, 0, 0, .15);
+    z-index: -99;
+}
+
+img.background {
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 1027px;
+    z-index: -99;
+}
+
+body.arabic .english {
+    display: none;
+}
+
+body.arabic .arabic {
+    display: block;
+}
+
+body.english .english {
+    display: block;
+}
+
+body.english .arabic {
+    display: none;
+}
+
+/* ========== Navbar ========== */
+.navbar {
+    position: fixed;
+    width: 100%;
+    height: 55px;
+    top: 0;
+    padding: 0 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    direction: ltr;
+    z-index: 1;
+    opacity: 1;
+    transition: all ease-in-out ;
+}
+
+body.welcome .navbar {
+    top: -100%;
+    opacity: 0;
+}
+
+.navbar .logoContainer, 
+.navbar .settingsIcon {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    margin: 0 2.5px;
+    padding: 10px 0 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.navbar .settingsIcon {
+    margin: 0 12px;
+    padding: 10px 0 0 9px;
+}
+
+
+.navbar .logoContainer::before, 
+.navbar .settingsIcon::before {
+    position: absolute;
+    content: '';
+    width: 50px;
+    height: 50px;
+    top: 0;
+    left: 0;
+    border-radius: 7.5px;
+    background: #BFB7AE;
+    z-index: -2;
+    box-shadow: 0 0 15px rgba(0, 0, 0, .15); 
+    opacity: .5;
+}
+
+
+.navbar .logoContainer img {
+    width: 30px;
+}
+
+.navbar .settingsIcon img {
+    width: 25px;
+}
+
+
+/* ========== Side Section ========== */
+.sideSection {
+    position: relative;
+    width: 24%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px 0 0 30px;
+    background-color: rgba(0, 0, 0, .15);
+    opacity: 1;
+    transition: all ease-in-out .5s;
+}
+
+body.settings .sideSection, 
+body.welcome .sideSection {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.sideSection .imgContainer img {
+    width: 125px;
+    height: 125px;
+    margin-bottom: 40px;
+    border-radius: 50%;
+    box-shadow: 0 5px 10px rgba(83, 62, 60, .25);
+}
+
+.sideSection .infoContainer {
+    position: relative;
+    width: 100%;
+    margin-bottom: 40px;
+    text-align: center;
+    color: var(--mainColorLight);
+    text-shadow: 0 2px 5px rgba(58, 43, 42, 0.25);
+}
+
+.sideSection .name {
+    margin-bottom: 15px;
+    font-size: 36px;
+    font-weight: var(--big-weight);
+}
+
+.sideSection .description {
+    font-size: 22px;
+    font-weight: var(--normal-weight);
+}
+
+.sideSection .copyRight {
+    position: absolute;
+    bottom: 20px;
+}
+
+.sideSection .socialIcons {
+    width: 100%;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.sideSection .icon {
+    position: relative;
+    width: 75px;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background: rgba(234, 226, 214, .25);
+    box-shadow: 0 2.5px 20px rgba(0, 0, 0, .15);
+}
+
+.sideSection .icon img {
+    width: 40px;
+    height: 40px;
+}
+
+
+/* ========== Main Content ========== */
+.body {
+    position: relative;
+    width: 75%;
+    min-height: 100%;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    direction: rtl;
+    padding: 20px;
+    border-radius: 0 30px 30px 0;
+    background-color: rgba(0, 0, 0, .15);
+    transform: translateX(0%);
+    opacity: 1;
+}
+
+body.welcome .body {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+.body h1 {
+    position: absolute;
+    width: 100%;
+    height: 55px;
+    top: 5px;
+    left: 15%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.body .countryStateForm {
+    position: relative;
+    width: 668px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    background: rgba(234, 226, 214, .5);
+}
+
+.body .countryStateForm .choice {
+    position: relative;
+    width: 75%;
+    margin: 0 0 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.body .countryStateForm select, 
+.body .countryStateForm .btn {
+    width: 350px;
+    height: 75px;
+    padding: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    border: none;
+    border-radius: 20px;
+    font-size: var(--bigger-size);
+    font-family: var(--arabic-font) !important;
+    color: var(--mainColorLight);
+    background: rgba(234, 226, 214, .75);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+}
+
+.body .countryStateForm select::-webkit-scrollbar {
+    width: 10px;
+    background: transparent;
+    outline: none;
+}
+
+.body .countryStateForm select::-webkit-scrollbar-thumb {
+    width: 10px;
+    height: auto;
+    border-radius: 5px;
+    background: #533E3C;
+}
+
+.body .countryStateForm .btn {
+    width: 400px;
+    margin-top: 25px;
+    font-size: 32px;
+    color: #EAE2D6;
+    background: rgba(83, 62, 60, .75);
+    cursor: pointer;
+}
+
+.body .countryStateForm option {
+    font-size: 24px;
+    color: #533E3C;
+}
+
+
+/* PrayTimes */
+.prayTimesContainer {
+    position: relative;
+    width: 668px;
+    transform: translateY(-50px);
+}
+
+.prayTimesContainer .row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-size: var(--big-size);
+    border-radius: 10px;
+}
+
+.prayTimesContainer .row.dateContainer {
+    height: 175px;
+    margin: 10px 0;
+    padding: 10px;
+    justify-content: space-around;
+    text-align: center;
+    font-size: var(--h2-size);
+    font-weight: var(--big-weight);
+    box-shadow: 0 2.5px 25px rgba(0, 0, 0, .15);
+    background: rgba(231, 223, 211, 0.75);
+}
+
+.prayTimesContainer .row.dateContainer .date {
+    font-size: var(--h3-size);
+    font-weight: var(--normal-weight);
+    direction: ltr;
+}
+
+.prayTimesContainer .row.prayTimeContainer {
+    margin: 0;
+    padding: 10px 0;
+    justify-content: space-between;
+    gap: 15px;
+    background: transparent;
+}
+
+body.english .prayTimesContainer .row.prayTimeContainer {
+    direction: ltr;
+}
+
+.prayTimesContainer .row.prayTimeContainer .prayTime, 
+.prayTimesContainer .row.prayTimeContainer .until {
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 2.5px 25px rgba(0, 0, 0, .15);
+    background: rgba(234, 226, 214, .25);
+}
+
+.prayTimesContainer .row.prayTimeContainer .prayTime {
+    width: 65%;
+}
+
+.row.prayTimeContainer .prayTime .pray {
+    width: 25%;
+    text-align: right;
+}
+
+body.english .row.prayTimeContainer .prayTime .pray {
+    text-align: left;
+}
+
+.prayTimesContainer .row.prayTimeContainer .until {
+    width: 45%;
+    justify-content: center;
+    opacity: 25%;
+}
+
+.prayTimesContainer .row.prayTimeContainer.active .prayTime, 
+.prayTimesContainer .row.prayTimeContainer.active .until {
+    background: rgba(234, 226, 214, .75);
+}
+
+.prayTimesContainer .row.prayTimeContainer.active .until {
+    opacity: 100%;
+}
+
+.time {
+    direction: ltr;
+    font-size: var(--super-big-size);
+}
+
+.time .amPm {
+    font-size: var(--smaller-size);
+}
+
+/* Time Now */
+.body .timeNow {
+    position: absolute;
+    bottom: 10px;
+    right: 10%;
+    width: 15%;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: var(--normal-size);
+    border-radius: 10px;
+    box-shadow: 0 2.5px 25px rgba(0, 0, 0, .15);
+    background: rgba(234, 226, 214, .25);
+}
+
+.body .timeNow .time {
+    text-transform: uppercase;
+}
+
+body.english .body .timeNow {
+    direction: ltr;
+}
+
+/* ==========  Welcome Screen  ========== */
+.welcomeScreen {
+    position: absolute;
+    width: 475px;
+    height: 725px;
+    top: 50%;
+    right: 200px;
+    transform: translateY(-150%);
+    padding: 99px 50px 59px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    box-shadow: 0 5px 50px rgba(0, 0, 0, .25);
+    background: rgba(234, 226, 214, .40);
+    opacity: 0;
+    transition: all ease-in-out .5s;
+}
+
+body.welcome .welcomeScreen {
+    transform: translateY(-50%);
+    opacity: 1;
+}
+
+body.english .welcomeScreen {
+    direction: ltr;
+}
+
+/* Logo Styilling */
+.welcomeScreen .logoContainer {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.welcomeScreen .logoContainer img {
+    width: 100px;
+}
+
+/* Form Styilling */
+.choices {
+    position: relative;
+    width: 100%;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.choice {
+    position: relative;
+    width: 100%;
+    margin: 15px 0 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.choice .choiceTitle {
+    position: relative;
+    width: 25%;
+    font-size: var(--normal-size);
+    font-weight: var(--big-weight);
+}
+
+body.english .choice .choiceTitle {
+    width: 35%;
+}
+
+.choice .choiceInputs {
+    position: relative;
+    width: 75%;
+    display: flex;
+    gap: 75px;
+}
+
+.choice .choiceInputs div {
+    display: flex;
+    gap: 10px;
+    direction: ltr;
+}
+
+body.english .choice .choiceInputs div {
+    direction: rtl;
+}
+
+.choice.notReq p,
+.settingsSection.notReq .choice select {
+    color: var(--dangerColor) !important;
+}
+
+/* Text Styilling */
+
+.welcomeScreen .textContainer {
+    position: relative;
+    width: 100%;
+    margin-top: 25px;
+}
+
+.welcomeScreen .textContainer .title {
+    font-size: var(--normal-size);
+}
+
+.welcomeScreen .textContainer .textContent {
+    font-size: var(--small-size);
+}
+
+/* ==========  Settings Screen  ========== */
+.settingsSection {
+    position: absolute;
+    width: 24%;
+    padding: 0 25px 0 0;
+    top: 75px;
+    transform: scaleX(0);
+    transform-origin: left;
+    opacity: 0;
+    transition: all ease-in-out .5s;
+}
+
+body.settings .settingsSection {
+    opacity: 1;
+    transform: scaleX(1);
+}
+
+body.english.settings .settingsSection {
+    direction: ltr;
+}
+
+.settingsSection .btn {
+    width: 75%;
+    height: 50px;
+    margin: 25px auto 0 0;
+}
+
+body.english .settingsSection .btn {
+    width: 68%;
+    margin: 25px 0 0 auto;
+}

@@ -180,7 +180,7 @@ function citiesDropDown(){
 
 // Save Informations
 function saveInfo(){
-    if (!new Date().getTime() < Number(window.localStorage.reqAvalibleTime)) {
+    if (new Date().getTime() >= Number(window.localStorage.reqAvalibleTime)) {
         window.localStorage.setItem('country', document.getElementById('country').value);
         let nullCity
         if (document.getElementById('city').value === 'null') {
@@ -225,6 +225,22 @@ function getPrayTimes() {
 
 // Print Times On Screen
 function printTimes() {
+    let dateContainer = document.querySelector('.row.dateContainer')
+    let date = new Date()
+    dateContainer.innerHTML = `
+    <div class="hijriDate">
+        <p class="day">${date.toLocaleDateString("ar-SA", {weekday: 'long'})}</p>
+        <div class="date">
+            <span class="days">${date.toLocaleDateString("ar-SA", {day: 'numeric'})}</span> / <span class="months">${date.toLocaleDateString("ar-SA", {month: 'numeric'})}</span> / <span class="years">${date.toLocaleDateString("ar-SA", {year: 'numeric'})}</span>
+        </div>
+    </div>
+    <div class="miladiDate">
+        <p class="day">${date.toLocaleDateString("en-US", {weekday: 'long'})}</p>
+        <div class="date">
+        <span class="days">${date.toLocaleDateString("en-US", {day: 'numeric'})}</span> / <span class="months">${date.toLocaleDateString("en-US", {month: 'numeric'})}</span> / <span class="years">${date.toLocaleDateString("en-US", {year: 'numeric'})}</span> M
+        </div>
+    </div>
+    `
     let praies = document.querySelectorAll('.prayTimeContainer')
     praies.forEach(pray => {
         const prayTime = localStorage[pray.id]
@@ -285,7 +301,6 @@ settingsBtn.addEventListener('click', () => {
     }
 
     if (new Date().getTime() >= Number(window.localStorage.reqAvalibleTime)) {
-        console.log(Number(window.localStorage.reqAvalibleTime))
         const saveBtn = document.getElementById('save')
         saveBtn.addEventListener('click', () => {
             saveInfo()
@@ -395,5 +410,3 @@ timeNow.innerHTML = `
 setInterval(function() {
     location.reload();
 }, 60000);
-
-console.log(window.localStorage.reqAvalibleNum)

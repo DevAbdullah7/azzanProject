@@ -111,8 +111,8 @@ function reqHandling() {
         window.localStorage.reqAvalibleTime = new Date().getTime() + (30 * 1000 * 60)
     } else if (Number(window.localStorage.reqAvalibleNum) == 3) {
         window.localStorage.reqAvalibleNum = 0
-        window.localStorage.reqAvalibleTime = new Date().getTime() + (180 * 1000 * 60)
-    } 
+        window.localStorage.reqAvalibleTime = new Date().getTime() + (45 * 1000 * 60)
+    }
 }
 
 function visited() {
@@ -443,6 +443,7 @@ function getPrayTimes() {
                 window.localStorage.setItem(`${key}`, `${value}`)
             }
         });
+        window.location.reload()
     }).catch((err) => {
         console.log(err)
         console.log("api doesn't work !")
@@ -457,9 +458,10 @@ function getPrayTimes() {
         Object.entries(prayesTimes).forEach(function([key, value]) {
             window.localStorage.setItem(`${key}`, `${value}`)
         })
+        window.location.reload()
     })
     // window.location.reload()
-    visited()
+    // visited()
 }
 
 // Print Times On Screen
@@ -539,11 +541,11 @@ settingsBtn.addEventListener('click', () => {
 
     if (new Date().getTime() >= Number(window.localStorage.reqAvalibleTime)) {
         const saveBtn = document.getElementById('save')
-        saveBtn.addEventListener('click', () => {
-            saveInfo()
-            document.getElementById('mainBody').classList.remove('settings')
-        })
         document.querySelector('.settingsSection').classList.remove('notReq')
+        saveBtn.addEventListener('click', () => {
+            document.getElementById('mainBody').classList.remove('settings')
+            saveInfo()
+        })
     } else {
         document.querySelector('form.choices').innerHTML = `
         <div class="choice">

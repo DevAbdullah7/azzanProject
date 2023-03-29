@@ -150,7 +150,7 @@
         -webkit-transition: .5s all ease-in-out;
         -o-transition: .5s all ease-in-out;
         transition: .5s all ease-in-out;
-        background-color: rgba(0, 0, 0, 0);
+        background-color: rgba(0, 0, 0, .05);
     }
     #mainBody.settings .body {
         -webkit-transform: translateX(-100%);
@@ -198,7 +198,6 @@
 
     .prayTimesContainer .row.prayTimeContainer .prayTime, 
     .prayTimesContainer .row.prayTimeContainer .until {
-        padding: 12;
         background: rgba(234, 226, 214, .25);
         -webkit-box-shadow: 0 2.5px 25px rgba(0, 0, 0, .25);
                 box-shadow: 0 2.5px 25px rgba(0, 0, 0, .25);

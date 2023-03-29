@@ -152,9 +152,12 @@ input[type="radio"]:checked::before {
     font-size: 22px;
     border-radius: 10px;
     text-decoration: none;
-    color: #EAE2D6;
     background: rgba(83, 62, 60, .75);
     cursor: pointer;
+}
+
+.btn p {
+    color: #EAE2D6;
 }
 
 * {
@@ -309,7 +312,7 @@ body.welcome .navbar {
 
 
 .navbar .logoContainer img {
-    width: 30px;
+    width: 35px;
 }
 
 .navbar .settingsIcon img {
@@ -666,7 +669,7 @@ body.english .row.prayTimeContainer .prayTime .pray {
 
 .prayTimesContainer .row.prayTimeContainer.active .prayTime, 
 .prayTimesContainer .row.prayTimeContainer.active .until {
-    background: rgba(234, 226, 214, .75);
+    background: rgba(234, 226, 214, 1);
 }
 
 .prayTimesContainer .row.prayTimeContainer.active .until {

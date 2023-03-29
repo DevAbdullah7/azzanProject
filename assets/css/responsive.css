@@ -1,4 +1,18 @@
 @media only screen and (max-width: 1400px) {
+    .pray,
+    .time,
+    .hijriDate,
+    .miladiDate,
+    .btn p,
+    .label label,
+    .copyRight p {
+        transform: translateY(2px);
+    }
+    select {
+        padding: 2px 10px 0;
+    }
+
+
     body::after {
         background: none;
     }
@@ -60,7 +74,27 @@
     }
 
     .sideSection .copyRight {
+        position: absolute;
         bottom: -190px;
+        right: 5%;
+        width: 90%;
+        padding: 10px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        font-size: var(--normal-size);
+        border-radius: 10px;
+        -webkit-backdrop-filter: blur(5px);
+                backdrop-filter: blur(5px);
+        -webkit-box-shadow: 0 2.5px 25px rgba(0, 0, 0, .25);
+                box-shadow: 0 2.5px 25px rgba(0, 0, 0, .25);
+        background: rgba(234, 226, 214, .5);
     }
 
     /* Navbar */
@@ -78,10 +112,13 @@
         padding: 10px 0 0 6px;
     }
 
-    .navbar .logoContainer::before, .navbar .settingsIcon::before {
+    .navbar .logoContainer::before, 
+    .navbar .settingsIcon::before {
         width: 40px;
         height: 40px;
         background: rgba(234, 226, 214, .5);
+        -webkit-box-shadow: 0 2.5px 25px rgba(0, 0, 0, .25);
+                box-shadow: 0 2.5px 25px rgba(0, 0, 0, .25);
     }
 
     .settingsSection {
@@ -113,7 +150,7 @@
         -webkit-transition: .5s all ease-in-out;
         -o-transition: .5s all ease-in-out;
         transition: .5s all ease-in-out;
-        background-color: rgba(0, 0, 0, .1);
+        background-color: rgba(0, 0, 0, 0);
     }
     #mainBody.settings .body {
         -webkit-transform: translateX(-100%);
@@ -123,6 +160,7 @@
 
     .body h1 {
         width: unset;
+        top: 6px;
         left: 50%;
         font-size: var(--big-size);
     }
@@ -138,6 +176,8 @@
         height: 130px;
         font-size: var(--bigger-size);
         background: rgba(231, 223, 211, 0.5);
+        -webkit-box-shadow: 0 2.5px 25px rgba(0, 0, 0, .25);
+                box-shadow: 0 2.5px 25px rgba(0, 0, 0, .25);
     }
 
     .prayTimesContainer .row.prayTimeContainer {
@@ -160,6 +200,8 @@
     .prayTimesContainer .row.prayTimeContainer .until {
         padding: 12;
         background: rgba(234, 226, 214, .25);
+        -webkit-box-shadow: 0 2.5px 25px rgba(0, 0, 0, .25);
+                box-shadow: 0 2.5px 25px rgba(0, 0, 0, .25);
     }
 
     .body .timeNow {

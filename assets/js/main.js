@@ -80,7 +80,10 @@ function welcomeScreen() {
                 </p>
             </div>
         </div>
-        <div class="btn" id="Continu">Continu</div>
+        <div class="btn" id="Continu">
+            <p class="arabic">استمرار</p>
+            <p class="english">Continu</p>
+        </div>
     </div>
     `
     document.querySelector('body').innerHTML = welcomeScreenContent
@@ -117,6 +120,237 @@ function visited() {
     if (Number(window.localStorage.reqAvalibleTime) == new Date().getTime()) {
         window.localStorage.reqAvalibleTime = new Date().getTime()
     }
+    let mainContent = `
+    <div class="navbar">
+        <div class="logoContainer">
+            <img src="./assets/imgs/testLogo.png" alt="" class="logo">
+        </div>
+        <div class="settingsIcon" id="settings">
+            <img src="./assets/imgs/icons/settings.svg" alt="">
+        </div>
+    </div>
+    <div class="sideSection">
+        <div class="imgContainer">
+            <img src="./assets/imgs/profileImg.png" alt="">
+        </div>
+        <div class="infoContainer">
+            <div class="name">
+                <p class="arabic">عبدالله القحطاني</p>
+                <p class="english">Abdullah Alqahtani</p>
+            </div>
+            <div class="description">
+                <p class="arabic">
+                    مبرمج واجهات المواقع الالكترونية <br>
+                    مصمم تجربة المستخدم
+                </p>
+                <p class="english">
+                    Front-End Developer <br>
+                    Ui-Ux Designer
+                </p>
+            </div>
+            <div class="socialIcons">
+                <a href="https://www.abdullah-alqahtani.org" target="_blank" class="icon"><img src="./assets/imgs/icons/social/1.png" alt=""></a>
+                <a href="tel:+966500820096" target="_blank" class="icon"><img src="./assets/imgs/icons/social/2.png" alt=""></a>
+                <a href="mailto:info@abdullah-alqahtani.org" target="_blank" class="icon"><img src="./assets/imgs/icons/social/3.png" alt=""></a>
+                <a href="https://www.linkedin.com/in/abdullah-alqahtani-190441220/" target="_blank" class="icon"><img src="./assets/imgs/icons/social/4.png" alt=""></a>
+            </div>
+        </div>
+        <div class="copyRight">
+            <p class="arabic">جميع الحقوق محفوظة &copy; 2023
+            </p>
+            <p class="english">All Copy rights is reseved &copy; 2023
+            </p>
+        </div>
+    </div>
+    <div class="settingsSection active">
+        <form action="" class="choices choicesWelcomeScreen">
+            <div class="choice">
+                <div class="choiceTitle">
+                    <span class="arabic">اللغة :</span>
+                    <span class="english">Language :</span>
+                </div>
+                <div class="choiceInputs">
+                    <div>
+                        <div class="label">
+                            <label for="radioArabic" class="arabic">عربي</label>
+                            <label for="radioArabic" class="english">عربي</label>
+                        </div>
+                        <input type="radio" value="arabic" id="radioArabic" onclick="langRadiosHandel(this)">
+                    </div>
+                    <div>
+                        <div class="label">
+                            <label for="radioEnglish" class="arabic">English</label>
+                            <label for="radioEnglish" class="english">English</label>
+                        </div>
+                        <input type="radio" value="english" id="radioEnglish" onclick="langRadiosHandel(this)">
+                    </div>
+                </div>
+            </div>
+            <div class="choice">
+                <div class="choiceTitle">
+                    <label for="country" class="arabic">الدولة :</label>
+                    <label for="country" class="english">Country :</label>
+                </div>
+                <div class="choiceInputs">
+                    <select name="country" id="country">
+                        
+                    </select>
+                </div>
+            </div>
+            <div class="choice">
+                <div class="choiceTitle">
+                    <label for="city" class="arabic">المدينة :</label>
+                    <label for="city" class="english">City :</label>
+                </div>
+                <div class="choiceInputs">
+                    <select name="city" id="city">
+                        <option value="null">-- Select a city --</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+        <div class="btn" id="save">
+            <p class="arabic">حفظ</p>
+            <p class="english">Save</p>
+        </div>
+    </div>
+    <div class="body">
+        <h1>اوقات الصلاة</h1>
+        <div class="prayTimesContainer">
+            <div class="row dateContainer">
+                <div class="hijriDate">
+                    <p class="day">الاحد</p>
+                    <div class="date">
+                        <span class="days">-</span> / <span class="months">-</span> / <span class="years">-</span> H
+                    </div>
+                </div>
+                <div class="miladiDate">
+                    <p class="day">Sunday</p>
+                    <div class="date">
+                        <span class="days">-</span> / <span class="months">-</span> / <span class="years">-</span> M
+                    </div>
+                </div>
+            </div>
+            <div class="row prayTimeContainer" id="Fajr">
+                <div class="prayTime">
+                    <div class="pray">
+                        <p class="arabic">الفجر</p>
+                        <p class="english">Fajer</p>
+                    </div>
+                    <div class="time">
+                        <span class="hours">-</span>:<span class="mints">-</span> <span class="amPm">-</span>
+                    </div>
+                </div>
+                <div class="until">
+                    <div class="icon"></div>
+                    <div class="time">
+                        <span class="hours">-</span>:<span class="mints">-</span>:<span class="socends">-</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row prayTimeContainer" id="Sunrise">
+                <div class="prayTime">
+                    <div class="pray">
+                        <p class="arabic">الشروق</p>
+                        <p class="english">Sunrise</p>
+                    </div>
+                    <div class="time">
+                        <span class="hours">-</span>:<span class="mints">-</span> <span class="amPm">-</span>
+                    </div>
+                </div>
+                <div class="until">
+                    <div class="icon"></div>
+                    <div class="time">
+                        <span class="hours">-</span>:<span class="mints">-</span>:<span class="socends">-</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row prayTimeContainer" id="Dhuhr">
+                <div class="prayTime">
+                    <div class="pray">
+                        <p class="arabic">الظهر</p>
+                        <p class="english">Dhuhr</p>
+                    </div>
+                    <div class="time">
+                        <span class="hours">-</span>:<span class="mints">-</span> <span class="amPm">-</span>
+                    </div>
+                </div>
+                <div class="until">
+                    <div class="icon"></div>
+                    <div class="time">
+                        <span class="hours">-</span>:<span class="mints">-</span>:<span class="socends">-</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row prayTimeContainer" id="Asr">
+                <div class="prayTime">
+                    <div class="pray">
+                        <p class="arabic">العصر</p>
+                        <p class="english">Asr</p>
+                    </div>
+                    <div class="time">
+                        <span class="hours">-</span>:<span class="mints">-</span> <span class="amPm">-</span>
+                    </div>
+                </div>
+                <div class="until">
+                    <div class="icon"></div>
+                    <div class="time">
+                        <span class="hours">-</span>:<span class="mints">-</span>:<span class="socends">-</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row prayTimeContainer" id="Maghrib">
+                <div class="prayTime">
+                    <div class="pray">
+                        <p class="arabic">المغرب</p>
+                        <p class="english">Maghrib</p>
+                    </div>
+                    <div class="time">
+                        <span class="hours">-</span>:<span class="mints">-</span> <span class="amPm">-</span>
+                    </div>
+                </div>
+                <div class="until">
+                    <div class="icon"></div>
+                    <div class="time">
+                        <span class="hours">-</span>:<span class="mints">-</span>:<span class="socends">-</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row prayTimeContainer" id="Isha">
+                <div class="prayTime">
+                    <div class="pray">
+                        <p class="arabic">العشاء</p>
+                        <p class="english">Isha</p>
+                    </div>
+                    <div class="time">
+                        <span class="hours">-</span>:<span class="mints">-</span> <span class="amPm">-</span>
+                    </div>
+                </div>
+                <div class="until">
+                    <div class="icon"></div>
+                    <div class="time">
+                        <span class="hours">-</span>:<span class="mints">-</span>:<span class="socends">-</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="timeNow">
+            <div class="timeNowTitle">
+                <p class="arabic">الوقت الان</p>
+                <p class="english">Time Now</p>
+            </div>
+            <div class="time">
+                <span class="hours">-</span>:<span class="mints">-</span> <span class="amPm">-</span>
+            </div>
+        </div>
+    </div>
+    <img src="./assets/imgs/2.png" alt="" class="background">
+    `
+    let refresh = setTimeout(() => {
+        window.location.reload()
+    }, 3000)
+    clearTimeout(refresh)
+
     printTimes()
 }
 
@@ -191,7 +425,6 @@ function saveInfo(){
         document.querySelector('#mainBody').classList.remove('settings')
         reqHandling()
         getPrayTimes()
-        window.location.reload()
     }
 }
 
@@ -202,7 +435,7 @@ function getPrayTimes() {
     let city = localStorage.valueOf('city').city
     // fetch(`http`)
     fetch(`http://api.aladhan.com/v1/timingsByCity?city=${city}&country=${country}&method=8`).then(response => response.json()).then(data => {
-        console.log('api working fine')
+        console.log('api work')
         let times = data.data.timings;
         let prayesNames = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Maghrib', 'Isha']
         Object.entries(times).forEach(function([key, value]) {
@@ -225,6 +458,8 @@ function getPrayTimes() {
             window.localStorage.setItem(`${key}`, `${value}`)
         })
     })
+    // window.location.reload()
+    visited()
 }
 
 // Print Times On Screen
@@ -268,12 +503,10 @@ function printTimes() {
         let hoursCounter = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
         let minutesCounter = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60))
         pray.childNodes[1].childNodes[3].innerHTML = `
-        <div class="time">
-            <span class="hours">${formattedHoursString}</span>:<span class="mints">${formattedMinutesString}</span> <span class="amPm">${period}</span>
-        </div>
+        <span class="hours">${formattedHoursString}</span>:<span class="mints">${formattedMinutesString}</span> <span class="amPm">${period}</span>
         `
         pray.childNodes[3].childNodes[3].innerHTML = `
-        <span class="hours">${hoursCounter < 10 & hoursCounter > 0 ? `0${hoursCounter}` : hoursCounter < 0 ? ' -- ' : hoursCounter}</span>:<span class="mints">${minutesCounter < 10 & minutesCounter > 0 ? `0${minutesCounter}` : minutesCounter < 0 ? ' -- ' : minutesCounter}</span>
+        <span class="hours">${hoursCounter < 10 & hoursCounter >= 0 ? `0${hoursCounter}` : hoursCounter < 0 ? ' -- ' : hoursCounter}</span>:<span class="mints">${minutesCounter < 10 & minutesCounter >= 0 ? `0${minutesCounter}` : minutesCounter < 0 ? ' -- ' : minutesCounter}</span>
         `
     })
     let counterItems = []

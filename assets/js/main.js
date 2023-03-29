@@ -92,7 +92,6 @@ function welcomeScreen() {
     document.querySelector('body').classList.add(localStorage.valueOf('lang').lang)
     const Continu = document.getElementById('Continu')
     Continu.addEventListener('click', () => {
-        window.localStorage.setItem('reqAvalibleNum', 0);
         window.localStorage.setItem('reqAvalibleTime', new Date().getTime());
         window.localStorage.setItem('visited', 'true');
         saveInfo()

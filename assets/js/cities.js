@@ -53104,6 +53104,7 @@ export let cities = {
       "Al Bahah",
       "Al Hufuf",
       "Al Qatif",
+      "Al Taif",
       "Buraidah",
       "Dammam",
       "Dhahran",
@@ -53121,8 +53122,7 @@ export let cities = {
       "Sabya",
       "Safwa",
       "Sakaka",
-      "Tabuk",
-      "Yanbu`"
+      "Tabuk"
     ],
     "Senegal": [
       "Boussinki",

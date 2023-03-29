@@ -102,7 +102,7 @@ function welcomeScreen() {
 function reqHandling() {
     if (Number(window.localStorage.reqAvalibleNum) == 0) {
         window.localStorage.reqAvalibleNum = 1
-        window.localStorage.reqAvalibleTime = new Date().getTime() + (5 * 1000 * 60)
+        window.localStorage.reqAvalibleTime = new Date().getTime() + (1 * 1000 * 60)
     } else if (Number(window.localStorage.reqAvalibleNum) == 1) {
         window.localStorage.reqAvalibleNum = 2
         window.localStorage.reqAvalibleTime = new Date().getTime() + (10 * 1000 * 60)
@@ -423,7 +423,7 @@ function saveInfo(){
             window.localStorage.setItem('city', document.getElementById('city').value)
         }
         document.querySelector('#mainBody').classList.remove('settings')
-        reqHandling()
+        window.localStorage.reqAvalibleTime = new Date().getTime() + (1 * 1000 * 60)
         getPrayTimes()
     }
 }
@@ -597,8 +597,8 @@ settingsBtn.addEventListener('click', () => {
                 
             </div>
             <div class="choiceInputs">
-                <p class="arabic">يرجى الانتظار لمدة ${Math.floor((Number(window.localStorage.reqAvalibleTime) - new Date().getTime()) / 1000 / 60)} دقائق حتى تتمكن من تغيير الموقع !</p>
-                <p class="english">Please wait for ${Math.floor((Number(window.localStorage.reqAvalibleTime) - new Date().getTime()) / 1000 / 60)} minutes befour change the location !</p>
+                <p class="arabic">يرجى الانتظار لمدة دقيقة حتى تتمكن من تغيير الموقع !</p>
+                <p class="english">Please wait for minute to change the location !</p>
             </div>
         </div>
         `

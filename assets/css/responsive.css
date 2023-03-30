@@ -1,12 +1,16 @@
 @media only screen and (max-width: 1400px) {
     .pray,
+    .btn p,
+    .label label.arabic {
+        transform: translateY(4px);
+    }
+
     .time,
     .hijriDate,
     .miladiDate,
-    .btn p,
     .label label,
     .copyRight p {
-        transform: translateY(2px);
+        transform: translateY(5px);
     }
     select {
         padding: 2px 10px 0;
@@ -174,10 +178,26 @@
 
     .prayTimesContainer .row.dateContainer {
         height: 130px;
+        padding: 10px 24px;
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
         font-size: var(--bigger-size);
         background: rgba(231, 223, 211, 0.5);
-        -webkit-box-shadow: 0 2.5px 25px rgba(0, 0, 0, .25);
-                box-shadow: 0 2.5px 25px rgba(0, 0, 0, .25);
+        -webkit-box-shadow: 0 0px 25px rgba(0, 0, 0, .15);
+                box-shadow: 0 0px 25px rgba(0, 0, 0, .15);
+    }
+
+    .row.dateContainer .hijriDate {
+        text-align: right;
+    }
+
+    .row.dateContainer .miladiDate {
+        text-align: left;
+    }
+
+    .row.dateContainer .day {
+        font-size: var(--big-size);
     }
 
     .prayTimesContainer .row.prayTimeContainer {
@@ -199,8 +219,12 @@
     .prayTimesContainer .row.prayTimeContainer .prayTime, 
     .prayTimesContainer .row.prayTimeContainer .until {
         background: rgba(234, 226, 214, .25);
-        -webkit-box-shadow: 0 2.5px 25px rgba(0, 0, 0, .25);
-                box-shadow: 0 2.5px 25px rgba(0, 0, 0, .25);
+        -webkit-box-shadow: 0 2.5px 25px rgba(0, 0, 0, .15);
+                box-shadow: 0 2.5px 25px rgba(0, 0, 0, .15);
+    }
+
+    .time {
+        font-size: var(--bigger-size);
     }
 
     .body .timeNow {
@@ -213,7 +237,7 @@
     }
 
     body::before {
-        opacity: 8%;
+        opacity: 25%;
     }
     
     img.background {

@@ -1116,6 +1116,10 @@ export let countries = {
         'name': 'Yemen',
         'cities': []
     },
+    'Palestine': {
+        'name': 'Yemen',
+        'cities': []
+    },
     'Panama': {
         'name': 'Yemen',
         'cities': []

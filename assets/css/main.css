@@ -607,6 +607,10 @@ body.welcome .body {
     background: rgba(231, 223, 211, 0.75);
 }
 
+.row.dateContainer .day {
+    margin-bottom: 8px;
+}
+
 .prayTimesContainer .row.dateContainer .date {
     font-size: var(--h3-size);
     font-weight: var(--normal-weight);

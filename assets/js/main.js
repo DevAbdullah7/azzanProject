@@ -103,6 +103,11 @@ function welcomeScreen() {
         window.localStorage.setItem('visited', 'true');
         saveInfo()
     })
+    Notification.requestPermission().then((Not_Per) => {
+        window.localStorage.setItem('Notification_Permission', Not_Per);
+    }).catch(() => {
+        window.localStorage.setItem('Notification_Permission', 'Not_Notification');
+    })
 }
 
 function reqHandling() {
@@ -469,8 +474,6 @@ function getPrayTimes() {
     // visited()
 }
 
-//test Notification
-
 
 // Print Times On Screen
 function printTimes() {
@@ -503,6 +506,16 @@ function printTimes() {
         let formattedHoursString = formattedHours < 10 & formattedHours > 0 ? `0${formattedHours}` : formattedHours.toString();
         const period = hours >= 12 ? 'PM' : 'AM';
         
+        // Pray Notification
+        if (formattedMinutesString === "00") {
+            if (window.localStorage.Notification_Permission === 'granted') {
+                const notify = new Notification('Pray Time', {
+                    body: 'Go To Pray !'
+                })
+            } else {
+                console.log('fuck !')
+            }
+        }
         // Counter
         const countDate = new Date();
         countDate.setHours(hours);

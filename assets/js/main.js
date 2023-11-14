@@ -507,15 +507,6 @@ function printTimes() {
         const period = hours >= 12 ? 'PM' : 'AM';
         
         // Pray Notification
-        if (formattedMinutesString === "00") {
-            if (window.localStorage.Notification_Permission === 'granted') {
-                const notify = new Notification('Pray Time', {
-                    body: 'Go To Pray !'
-                })
-            } else {
-                console.log('fuck !')
-            }
-        }
         // Counter
         const countDate = new Date();
         countDate.setHours(hours);
@@ -529,7 +520,7 @@ function printTimes() {
         <span class="hours">${formattedHoursString}</span>:<span class="mints">${formattedMinutesString}</span> <span class="amPm">${period}</span>
         `
         pray.childNodes[3].childNodes[3].innerHTML = `
-        <span class="hours">${hoursCounter < 10 & hoursCounter >= 0 ? `0${hoursCounter}` : hoursCounter < 0 ? ' -- ' : hoursCounter}</span>:<span class="mints">${minutesCounter < 10 & minutesCounter >= 0 ? `0${minutesCounter}` : minutesCounter < 0 ? ' -- ' : minutesCounter}</span>
+        <span class="hours">${hoursCounter < 10 & hoursCounter >= 0 ? `0${hoursCounter}` : hoursCounter < 0 ? ' -- ' : hoursCounter}</span>:<span class="mints">${minutesCounter < 10 & minutesCounter >= 0 ? `0${minutesCounter}` : minutesCounter < 0 ? minutesCounter : minutesCounter}</span>
         `
     })
     let counterItems = []
@@ -544,6 +535,39 @@ function printTimes() {
     document.querySelectorAll('.until .time .hours').forEach(item => {
         if (item.innerHTML == minItem) {
             item.parentNode.parentNode.parentNode.classList.add('active')
+
+            // Send Notification of pray
+            if (item.parentNode.children[1].innerHTML == "00") {
+                let prayName = item.parentNode.parentNode.parentNode.id
+                let notifyBody = ''
+                if (prayName == 'Fajr') {
+                    prayName = 'الفجر'
+                    notifyBody = `عن النبي صلى الله عليه وسلم قال : { أَثقَل الصَّلاةِ على المُنَافِقِين : صَلاَة العِشَاء، وصَلاَة الفَجر، وَلَو يَعلَمُون مَا فِيها لَأَتَوهُمَا وَلَو حَبْوُا }`
+                } else if (prayName == 'Sunrise') {
+                    prayName = 'الشروق'
+                    notifyBody = 'عن أبي هريرة رضي الله عنه يقول : { أوصاني خليلي بثلاثٍ : النَّومِ على وترٍ، وصيامِ ثلاثةِ أيَّامٍ من كلِّ شَهرٍ، ورَكعتيِ الضُّحى }'
+                } else if (prayName == 'Dhuhr') {
+                    prayName = 'الظهر'
+                    notifyBody = 'عن النبي صلى الله عليه وسلم قال : { مَنْ حَافَظَ عَلَى أَرْبَعِ رَكَعَاتٍ قَبْلَ الظُّهْرِ وَأَرْبَعٍ بَعْدَهَا حَرَّمَهُ اللَّهُ عَلَى النَّارِ }'
+                } else if (prayName == 'Asr') {
+                    prayName = 'العصر'
+                    notifyBody = 'عن النبي صلى الله عليه وسلم قال : { الَّذِي تَفُوتُهُ صَلاَةُ العَصْرِ، كَأَنَّمَا وُتِرَ أَهْلَهُ وَمَالَهُ }'
+                } else if (prayName == 'Maghrib') {
+                    prayName = 'المغرب'
+                    notifyBody = 'عن عقبة بن عامر أن النبي صلى الله عليه وسلم قال : { لا تزال أمتي بخير، أو: على الفطرة، ما لم يؤخروا المغرب حتى تشتبك النجوم }'
+                } else if (prayName == 'Isha') {
+                    prayName = 'العشاء'
+                    notifyBody = `عن النبي صلى الله عليه وسلم قال : { أَثقَل الصَّلاةِ على المُنَافِقِين : صَلاَة العِشَاء، وصَلاَة الفَجر، وَلَو يَعلَمُون مَا فِيها لَأَتَوهُمَا وَلَو حَبْوُا }`
+                }
+                if (window.localStorage.Notification_Permission === 'granted') {
+                    const notify = new Notification(`حان وقت صلاة ${prayName}`, {
+                        body: `${notifyBody}`,
+                        icon: 'assets/imgs/testLogo.png'
+                    })
+                } else {
+                    console.log('fuck !')
+                }
+            }
         }
     })
 }
@@ -551,6 +575,15 @@ function printTimes() {
 // Settings Factunality
 const settingsBtn = document.getElementById('settings')
 settingsBtn.addEventListener('click', () => {
+    if (window.localStorage.Notification_Permission === 'granted') {
+        let prayName = 'Isha'
+        const notify = new Notification(`حان وقت صلاة العشاء`, {
+            body: `عن النبي صلى الله عليه وسلم قال : { أَثقَل الصَّلاةِ على المُنَافِقِين : صَلاَة العِشَاء، وصَلاَة الفَجر، وَلَو يَعلَمُون مَا فِيها لَأَتَوهُمَا وَلَو حَبْوُا }`,
+            icon: 'assets/imgs/testLogo.png'
+        })
+    } else {
+        console.log('fuck !')
+    }
     document.getElementById('mainBody').classList.toggle('settings')
     if (window.localStorage.lang == 'arabic') {
         document.getElementById('radioArabic').checked = true

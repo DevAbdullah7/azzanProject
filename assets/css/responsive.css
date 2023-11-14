@@ -1,21 +1,91 @@
+/* CSS specific to iOS devices */ 
+@supports (-webkit-touch-callout: none) {
+    .btn.installBtn {
+        display: none;
+    }
+}
+
 @media only screen and (max-width: 1400px) {
-    .pray,
-    .btn p,
-    .label label.arabic {
+    html {
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+    body {
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    #mainBody.arabic .pray,
+    #mainBody.arabic .btn p,
+    #mainBody.arabic .label label.arabic {
         transform: translateY(4px);
     }
 
-    .time,
-    .hijriDate,
-    .miladiDate,
-    .label label,
-    .copyRight p {
+    #mainBody.arabic .copyRight p,
+    #mainBody.english .btn p {
+        transform: translateY(3px);
+    }
+
+    #mainBody.arabic .time {
+        transform: translateY(2px);
+    }
+
+    #mainBody.arabic .hijriDate,
+    #mainBody.arabic .miladiDate,
+    #mainBody.arabic .label label {
         transform: translateY(5px);
     }
+
+    #mainBody.english .pray,
+    #mainBody.english .label label.arabic {
+        transform: translateY(1px);
+    }
+
+    #mainBody.english .copyRight p {
+        transform: translateY(1px);
+    }
+
+    #mainBody.english .time,
+    #mainBody.english .hijriDate,
+    #mainBody.english .miladiDate,
+    #mainBody.english .label label {
+        transform: translateY(3px);
+    }
+
     select {
         padding: 2px 10px 0;
     }
 
+    .btn.installBtn {
+        position: relative;
+        -webkit-box-shadow: 0 2.5px 25px rgba(0, 0, 0, .25);
+                box-shadow: 0 2.5px 25px rgba(0, 0, 0, .25);
+        background: rgba(234, 226, 214, .5);
+    }
+
+    .btn .icon {
+        display: block;
+    }
+    
+    #mainBody.settings .btn.installBtn {
+        width: 100%;
+        transform: translate(-50%, 32px);
+    }
+
+    @media (display-mode: standalone) {
+        .btn.installBtn {
+            display: none;
+        }
+    }
+
+    
+    .btn.installBtn p,
+    .btn.installBtn .iconShape {
+        color: #533E3C;
+        font-size: var(--small-size);
+    }
 
     body::after {
         background: none;
@@ -25,6 +95,7 @@
     .sideSection {
         position: absolute;
         width: 100%;
+        height: 100%;
         -webkit-transform: translateY(-10%);
             -ms-transform: translateY(-10%);
                 transform: translateY(-10%);
@@ -79,9 +150,10 @@
 
     .sideSection .copyRight {
         position: absolute;
-        bottom: -190px;
+        bottom: -175px;
         right: 5%;
         width: 90%;
+        height: 50px;
         padding: 10px;
         display: -webkit-box;
         display: -ms-flexbox;
@@ -92,13 +164,44 @@
         -webkit-box-align: center;
             -ms-flex-align: center;
                 align-items: center;
-        font-size: var(--normal-size);
+        font-size: var(--small-size);
         border-radius: 10px;
         -webkit-backdrop-filter: blur(5px);
                 backdrop-filter: blur(5px);
         -webkit-box-shadow: 0 2.5px 25px rgba(0, 0, 0, .25);
                 box-shadow: 0 2.5px 25px rgba(0, 0, 0, .25);
         background: rgba(234, 226, 214, .5);
+    }
+
+    /* CSS for iOS devices */ 
+    @supports (-webkit-touch-callout: none) {
+        /* CSS For Safari Browser */
+        .sideSection .copyRight {
+            bottom: -175px;
+        }
+        img.background {
+            bottom: 0px;
+        }
+
+        /* CSS For PWA */
+        @media (display-mode: standalone) {
+            #mainBody.settings .sideSection {
+                -webkit-transform: translateY(-25%);
+                    -ms-transform: translateY(-25%);
+                        transform: translateY(-25%);
+            }
+            body.settings .settingsSection {
+                -webkit-transform: translate(0, -25px);
+                    -ms-transform: translate(0, -25px);
+                        transform: translate(0, -25px);
+            }
+            .sideSection .copyRight {
+                bottom: -155px;
+            }
+            img.background {
+                bottom: 45px;
+            }
+        }
     }
 
     /* Navbar */
@@ -120,7 +223,7 @@
     .navbar .settingsIcon::before {
         width: 40px;
         height: 40px;
-        background: rgba(234, 226, 214, .5);
+        background: rgba(234, 226, 214, 1);
         -webkit-box-shadow: 0 2.5px 25px rgba(0, 0, 0, .25);
                 box-shadow: 0 2.5px 25px rgba(0, 0, 0, .25);
     }
@@ -150,10 +253,14 @@
     /* Main Body With Content */
     .body {
         width: 100%;
+        padding: 125px 20px 20px;
+        -webkit-box-pack: start;
+            -ms-flex-pack: start;
+                justify-content: flex-start;
         border-radius: 0;
         -webkit-transition: .5s all ease-in-out;
-        -o-transition: .5s all ease-in-out;
-        transition: .5s all ease-in-out;
+            -o-transition: .5s all ease-in-out;
+                transition: .5s all ease-in-out;
         background-color: rgba(0, 0, 0, .05);
     }
     #mainBody.settings .body {
@@ -167,6 +274,10 @@
         top: 6px;
         left: 50%;
         font-size: var(--big-size);
+    }
+
+    .prayTimesContainer .row {
+        font-size: var(--normal-size);
     }
 
     .body .prayTimesContainer {
@@ -196,6 +307,9 @@
         text-align: left;
     }
 
+    .row.dateContainer .miladiDate .day {
+        font-size: var(--normal-size);
+    }
     .row.dateContainer .day {
         font-size: var(--big-size);
     }
@@ -206,6 +320,9 @@
 
     .prayTimesContainer .row.dateContainer .date {
         font-size: var(--normal-size);
+    }
+    #mainBody.english .miladiDate .date {
+        font-size: var(--smaller-size);
     }
 
     .prayTimesContainer .row.prayTimeContainer .prayTime {
@@ -224,7 +341,14 @@
     }
 
     .time {
-        font-size: var(--bigger-size);
+        font-size: var(--normal-size);
+    }
+    #mainBody.english .time {
+        /* font-size: var(--big-size); */
+    }
+
+    .time .amPm {
+        font-size: 12px;
     }
 
     .body .timeNow {
@@ -237,11 +361,11 @@
     }
 
     body::before {
-        opacity: 25%;
+        opacity: 15%;
     }
     
     img.background {
-        width: 100%;
+        width: 90%;
     }
 
     /* Welcome Screen */
@@ -260,6 +384,10 @@
         margin-top: 16px;
     }
 
+    .choice .choiceInputs {
+        gap: 30px;
+    }
+
     .welcomeScreen .textContainer .title,
     .choice .choiceTitle {
         font-size: var(--small-size);
@@ -274,16 +402,5 @@
             -ms-flex-pack: justify;
                 justify-content: space-between;
         padding: 10px 24px;
-    }
-    .prayTimesContainer .row.prayTimeContainer.done .prayTime {
-        width: 100%;
-        padding: 10px 24px;
-        -webkit-box-pack: justify;
-            -ms-flex-pack: justify;
-                justify-content: space-between;
-    }
-
-    .prayTimesContainer .row.prayTimeContainer.done .until {
-        display: none;
     }
 }

@@ -1,8 +1,11 @@
-import { countries } from './countries.js';
-import { cities } from './cities.js';
+import { countries } from './data/countries.js';
+import { cities } from './data/cities.js';
 
 window.addEventListener('onload', welcome())
 function welcome() {
+    if (window.localStorage.appInstalled == 'true') {
+        document.querySelector('.installBtn').style['display'] = 'none'
+    }
     if (window.localStorage.hasOwnProperty('visited')) {
         visited()
     } else {
@@ -20,20 +23,18 @@ function welcomeScreen() {
         <form action="" class="choices choicesWelcomeScreen">
             <div class="choice">
                 <div class="choiceTitle">
-                    <span class="arabic">اللغة :</span>
-                    <span class="english">Language :</span>
+                    <p class="arabic">اللغة :</p>
+                    <p class="english">Language :</p>
                 </div>
                 <div class="choiceInputs">
                     <div>
                         <div class="label">
                             <label for="radioArabic" class="arabic">عربي</label>
-                            <label for="radioArabic" class="english">عربي</label>
                         </div>
                         <input type="radio" value="arabic" id="radioArabic" onclick="langRadiosHandel(this)" checked>
                     </div>
                     <div>
                         <div class="label">
-                            <label for="radioEnglish" class="arabic">English</label>
                             <label for="radioEnglish" class="english">English</label>
                         </div>
                         <input type="radio" value="english" id="radioEnglish" onclick="langRadiosHandel(this)">
@@ -42,22 +43,26 @@ function welcomeScreen() {
             </div>
             <div class="choice">
                 <div class="choiceTitle">
-                    <label for="country" class="arabic">الدولة :</label>
-                    <label for="country" class="english">Country :</label>
+                    <label for="country">
+                        <p class="arabic">الدولة :</p>
+                        <p class="english">Country :</p>
+                    </label>
                 </div>
                 <div class="choiceInputs">
-                    <select name="country" id="country">
+                    <select name="country" id="country" class="english">
                         
                     </select>
                 </div>
             </div>
             <div class="choice">
                 <div class="choiceTitle">
-                    <label for="city" class="arabic">المدينة :</label>
-                    <label for="city" class="english">City :</label>
+                    <label for="city">
+                        <p class="arabic">المدينة :</p>
+                        <p class="english">City :</p>
+                    </label>
                 </div>
                 <div class="choiceInputs">
-                    <select name="city" id="city">
+                    <select name="city" id="city" class="english">
                         <option value="null">-- Select a city --</option>
                     </select>
                 </div>
@@ -65,8 +70,10 @@ function welcomeScreen() {
         </form>
         <div class="text textContainer textWelcomeScreen">
             <div class="title">
-                <h2 class="arabic">تنويه :</h2>
-                <h2 class="english">Attention :</h2>
+                <h2>
+                    <p class="arabic">تنويه :</p>
+                    <p class="english">Attention :</p>
+                </h2>
             </div>
             <div class="textContent">
                 <p class="arabic">
@@ -361,7 +368,7 @@ citiesSelectDrop.addEventListener('focus', citiesDropDown)
 function countriesDropDown() {
     const countriesSelectDrop = document.getElementById('country')
     // let options = `<option value="${localStorage.valueOf('country').country}">${localStorage.valueOf('country').country}</option>`;
-    let options = '';
+    let options = '<option value="Saudi_Arabia">Saudi_Arabia</option>';
     for (let country in countries) {
         let countryName = ''
         for (let letter of country) {
@@ -383,7 +390,6 @@ function citiesDropDown(){
     const citiesList = Object.entries(cities)
     for (let i = 0; i < citiesList.length; i++) {
         if (countryName == citiesList[i][0].replaceAll(' ', '_')) {
-            console.log(citiesList[i][0].replace(' ', '_'))
             countryExist = true
             let ctitesOfCountry = citiesList[i][1]
             let options = '<option value="none">-- Select a city --</option>';
@@ -463,19 +469,22 @@ function getPrayTimes() {
     // visited()
 }
 
+//test Notification
+
+
 // Print Times On Screen
 function printTimes() {
     let dateContainer = document.querySelector('.row.dateContainer')
     let date = new Date()
     dateContainer.innerHTML = `
-    <div class="hijriDate">
-        <p class="day">${date.toLocaleDateString("ar-SA", {weekday: 'long'})}</p>
+    <div class="hijriDate arabic">
+        <div class="day">${date.toLocaleDateString("ar-SA", {weekday: 'long'})}</div>
         <div class="date">
             <span class="days">${date.toLocaleDateString("ar-SA", {day: 'numeric'})}</span> / <span class="months">${date.toLocaleDateString("ar-SA", {month: 'numeric'})}</span> / <span class="years">${date.toLocaleDateString("ar-SA", {year: 'numeric'})}</span>
         </div>
     </div>
     <div class="miladiDate">
-        <p class="day">${date.toLocaleDateString("en-US", {weekday: 'long'})}</p>
+        <div class="day english">${date.toLocaleDateString("en-US", {weekday: 'long'})}</div>
         <div class="date">
         <span class="days">${date.toLocaleDateString("en-US", {day: 'numeric'})}</span> / <span class="months">${date.toLocaleDateString("en-US", {month: 'numeric'})}</span> / <span class="years">${date.toLocaleDateString("en-US", {year: 'numeric'})}</span> M
         </div>
@@ -490,8 +499,8 @@ function printTimes() {
         if (formattedHours === 0) {
             formattedHours = 12;
         }
-        const formattedHoursString = formattedHours < 10 & formattedHours > 0 ? `0${formattedHours}` : formattedHours.toString();
-        const formattedMinutesString = minutes;
+        let formattedMinutesString = minutes
+        let formattedHoursString = formattedHours < 10 & formattedHours > 0 ? `0${formattedHours}` : formattedHours.toString();
         const period = hours >= 12 ? 'PM' : 'AM';
         
         // Counter
@@ -549,20 +558,18 @@ settingsBtn.addEventListener('click', () => {
         document.querySelector('form.choices').innerHTML = `
         <div class="choice">
             <div class="choiceTitle">
-                <span class="arabic">اللغة :</span>
-                <span class="english">Language :</span>
+                <p class="arabic">اللغة :</p>
+                <p class="english">Language :</p>
             </div>
             <div class="choiceInputs">
                 <div>
                     <div class="label">
                         <label for="radioArabic" class="arabic">عربي</label>
-                        <label for="radioArabic" class="english">عربي</label>
                     </div>
                     <input type="radio" value="arabic" id="radioArabic" onclick="langRadiosHandel(this)">
                 </div>
                 <div>
                     <div class="label">
-                        <label for="radioEnglish" class="arabic">English</label>
                         <label for="radioEnglish" class="english">English</label>
                     </div>
                     <input type="radio" value="english" id="radioEnglish" onclick="langRadiosHandel(this)">
@@ -571,22 +578,26 @@ settingsBtn.addEventListener('click', () => {
         </div>
         <div class="choice">
             <div class="choiceTitle">
-                <label for="country" class="arabic">الدولة :</label>
-                <label for="country" class="english">Country :</label>
+                <label for="country">
+                    <p class="arabic">الدولة :</p>
+                    <p class="english">Country :</p>
+                </label>
             </div>
             <div class="choiceInputs">
-                <select name="country" id="country" disabled>
+                <select name="country" id="country" class="english" disabled>
                     <option value="null">-- Select a country --</option>
                 </select>
             </div>
         </div>
         <div class="choice">
             <div class="choiceTitle">
-                <label for="city" class="arabic">المدينة :</label>
-                <label for="city" class="english">City :</label>
+                <label for="city">
+                    <p class="arabic">المدينة :</p>
+                    <p class="english">City :</p>
+                </label>
             </div>
             <div class="choiceInputs">
-                <select name="city" id="city" disabled>
+                <select name="city" id="city" class="english" disabled>
                     <option value="null">-- Select a city --</option>
                 </select>
             </div>

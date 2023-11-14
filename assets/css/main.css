@@ -86,7 +86,6 @@ select {
     border: none;
     border-radius: 10px;
     font-size: var(--big-size);
-    font-family: var(--arabic-font) !important;
     color: var(--mainColorLight);
     background: rgba(234, 226, 214, .75);
     -webkit-box-shadow: 0 2px 15px rgba(0, 0, 0, .15);
@@ -149,15 +148,53 @@ input[type="radio"]:checked::before {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+    gap: 8px;
     font-size: 22px;
     border-radius: 10px;
     text-decoration: none;
     background: rgba(83, 62, 60, .75);
     cursor: pointer;
+    -webkit-transition: .5s all ease-in-out;
+    -o-transition: .5s all ease-in-out;
+    transition: .5s all ease-in-out;
+}
+#mainBody.english .btn {
+    direction: ltr;
 }
 
-.btn p {
+.btn.installBtn {
+    position: absolute;
+    left: 0;
+    bottom: 10px;
+    height: 55px;
+    opacity: 0;
+}
+
+#mainBody.settings .btn.installBtn {
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 1;
+}
+
+.btn p,
+.btn .iconShape {
     color: #EAE2D6;
+}
+
+.btn .icon {
+    width: 30px;
+    display: none;
+}
+.btn .icon img {
+    width: 100%;
+}
+
+.arabic {
+    font-family: var(--arabic-font);
+}
+
+.english {
+    font-family: var(--english-font);
 }
 
 * {
@@ -166,6 +203,10 @@ input[type="radio"]:checked::before {
             box-sizing: border-box;
     color: var(--mainColorLight);
     text-shadow: var(--normal-shadow);
+    -webkit-user-select: none;
+        -moz-user-select: none;
+            -ms-user-select: none;
+                user-select: none;
 }
 
 html {
@@ -224,19 +265,19 @@ img.background {
     z-index: -99;
 }
 
-body.arabic .english {
+body.arabic p.english {
     display: none;
 }
 
-body.arabic .arabic {
+body.arabic p.arabic {
     display: block;
 }
 
-body.english .english {
+body.english p.english {
     display: block;
 }
 
-body.english .arabic {
+body.english p.arabic {
     display: none;
 }
 
@@ -259,9 +300,9 @@ body.english .arabic {
     direction: ltr;
     z-index: 1;
     opacity: 1;
-    -webkit-transition: all ease-in-out ;
-    -o-transition: all ease-in-out ;
-    transition: all ease-in-out ;
+    -webkit-transition: .5s all ease-in-out ;
+    -o-transition: .5s all ease-in-out ;
+    transition: .5s all ease-in-out ;
 }
 
 body.welcome .navbar {
@@ -316,7 +357,35 @@ body.welcome .navbar {
 }
 
 .navbar .settingsIcon img {
+    position: absolute;
     width: 25px;
+    -webkit-transition: .75s all ease-in-out;
+    -o-transition: .75s all ease-in-out;
+    transition: .75s all ease-in-out;
+}
+
+body .navbar .settingsIcon img.open {
+    -webkit-transform: rotate(0) scale(1);
+        -ms-transform: rotate(0) scale(1);
+            transform: rotate(0) scale(1);
+}
+
+body.settings .navbar .settingsIcon img.open {
+    -webkit-transform: rotate(145deg) scale(0);
+        -ms-transform: rotate(145deg) scale(0);
+            transform: rotate(145deg) scale(0);
+}
+
+body .navbar .settingsIcon img.close {
+    -webkit-transform: rotate(45deg) scale(0);
+        -ms-transform: rotate(45deg) scale(0);
+            transform: rotate(45deg) scale(0);
+}
+
+body.settings .navbar .settingsIcon img.close {
+    -webkit-transform: rotate(0) scale(1);
+        -ms-transform: rotate(0) scale(1);
+            transform: rotate(0) scale(1);
 }
 
 
@@ -386,6 +455,9 @@ body.welcome .sideSection {
 .sideSection .copyRight {
     position: absolute;
     bottom: 20px;
+    -webkit-transition: all ease-in-out .5s;
+    -o-transition: all ease-in-out .5s;
+    transition: all ease-in-out .5s;
 }
 
 .sideSection .socialIcons {
@@ -680,6 +752,18 @@ body.english .row.prayTimeContainer .prayTime .pray {
     opacity: 100%;
 }
 
+.prayTimesContainer .row.prayTimeContainer.done .prayTime {
+    width: 100%;
+    padding: 10px 24px;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+}
+
+.prayTimesContainer .row.prayTimeContainer.done .until {
+    display: none;
+}
+
 .time {
     direction: ltr;
     font-size: var(--super-big-size);
@@ -695,6 +779,7 @@ body.english .row.prayTimeContainer .prayTime .pray {
     bottom: 10px;
     right: 10%;
     width: 15%;
+    height: 55px;
     padding: 10px;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -820,7 +905,7 @@ body.english .welcomeScreen {
 }
 
 body.english .choice .choiceTitle {
-    width: 35%;
+    width: 40%;
 }
 
 .choice .choiceInputs {
@@ -868,9 +953,10 @@ body.english .choice .choiceInputs div {
 /* ==========  Settings Screen  ========== */
 .settingsSection {
     position: absolute;
+    top: 0;
     width: 24%;
+    height: 100%;
     padding: 0 25px 0 0;
-    top: 75px;
     -webkit-transform: translateX(-100%);
         -ms-transform: translateX(-100%);
             transform: translateX(-100%);
@@ -901,6 +987,6 @@ body.english.settings .settingsSection {
 }
 
 body.english .settingsSection .btn {
-    width: 68%;
+    width: 65.5%;
     margin: 25px 0 0 auto;
 }

@@ -1,6 +1,20 @@
 import { countries } from './data/countries.js';
 import { cities } from './data/cities.js';
 
+// Caching Daynamic
+const cacheItems = document.querySelectorAll('.cacheItem')
+cacheItems.forEach(item => {
+    if (item.src !== undefined) {
+        item.src = item.src + cacheVersion
+    } else if (item.href !== undefined) {
+        item.href = item.href + cacheVersion
+    } else if (item.content !== undefined) {
+        item.content = item.content + cacheVersion
+    } else {
+        console.log(item)
+    }
+})
+
 window.addEventListener('onload', welcome())
 function welcome() {
     if (window.localStorage.appInstalled == 'true') {
@@ -575,15 +589,15 @@ function printTimes() {
 // Settings Factunality
 const settingsBtn = document.getElementById('settings')
 settingsBtn.addEventListener('click', () => {
-    if (window.localStorage.Notification_Permission === 'granted') {
-        let prayName = 'Isha'
-        const notify = new Notification(`حان وقت صلاة العشاء`, {
-            body: `عن النبي صلى الله عليه وسلم قال : { أَثقَل الصَّلاةِ على المُنَافِقِين : صَلاَة العِشَاء، وصَلاَة الفَجر، وَلَو يَعلَمُون مَا فِيها لَأَتَوهُمَا وَلَو حَبْوُا }`,
-            icon: 'assets/imgs/testLogo.png'
-        })
-    } else {
-        console.log('fuck !')
-    }
+    // if (window.localStorage.Notification_Permission === 'granted') {
+    //     let prayName = 'Isha'
+    //     const notify = new Notification(`حان وقت صلاة العشاء`, {
+    //         body: `عن النبي صلى الله عليه وسلم قال : { أَثقَل الصَّلاةِ على المُنَافِقِين : صَلاَة العِشَاء، وصَلاَة الفَجر، وَلَو يَعلَمُون مَا فِيها لَأَتَوهُمَا وَلَو حَبْوُا }`,
+    //         icon: 'assets/imgs/testLogo.png'
+    //     })
+    // } else {
+    //     console.log('fuck !')
+    // }
     document.getElementById('mainBody').classList.toggle('settings')
     if (window.localStorage.lang == 'arabic') {
         document.getElementById('radioArabic').checked = true

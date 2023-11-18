@@ -327,6 +327,7 @@ body.welcome .navbar {
         -ms-flex-align: center;
             align-items: center;
     cursor: pointer;
+    z-index: 10000;
 }
 
 .navbar .settingsIcon {
